@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="420" viewBox="0 0 540 420" role="img" aria-labelledby="title desc" font-family="Cambria, 'Cambria Math', 'STIX Two Text', 'Times New Roman', Times, 'Liberation Serif', serif">
+  <title id="title">Projection of a onto b, with length ‖c‖</title>
+  <desc id="desc">The projection of a onto b, with its length labelled ‖c‖.</desc>
+  <defs><clipPath id="plate"><rect x="1" y="1" width="538" height="418" rx="10"/></clipPath></defs>
+  <rect x="0.5" y="0.5" width="539" height="419" rx="10" fill="#ffffff" stroke="#d9d9d9"/>
+  <g clip-path="url(#plate)">
+    <g stroke="#efefef" stroke-width="1" shape-rendering="crispEdges"><line x1="0" y1="0" x2="0" y2="420"/><line x1="30" y1="0" x2="30" y2="420"/><line x1="60" y1="0" x2="60" y2="420"/><line x1="90" y1="0" x2="90" y2="420"/><line x1="150" y1="0" x2="150" y2="420"/><line x1="180" y1="0" x2="180" y2="420"/><line x1="210" y1="0" x2="210" y2="420"/><line x1="240" y1="0" x2="240" y2="420"/><line x1="300" y1="0" x2="300" y2="420"/><line x1="330" y1="0" x2="330" y2="420"/><line x1="360" y1="0" x2="360" y2="420"/><line x1="390" y1="0" x2="390" y2="420"/><line x1="450" y1="0" x2="450" y2="420"/><line x1="480" y1="0" x2="480" y2="420"/><line x1="510" y1="0" x2="510" y2="420"/><line x1="540" y1="0" x2="540" y2="420"/><line x1="0" y1="405" x2="540" y2="405"/><line x1="0" y1="375" x2="540" y2="375"/><line x1="0" y1="345" x2="540" y2="345"/><line x1="0" y1="285" x2="540" y2="285"/><line x1="0" y1="255" x2="540" y2="255"/><line x1="0" y1="225" x2="540" y2="225"/><line x1="0" y1="195" x2="540" y2="195"/><line x1="0" y1="135" x2="540" y2="135"/><line x1="0" y1="105" x2="540" y2="105"/><line x1="0" y1="75" x2="540" y2="75"/><line x1="0" y1="45" x2="540" y2="45"/></g>
+    <g stroke="#dcdcdc" stroke-width="1" shape-rendering="crispEdges"><line x1="270" y1="0" x2="270" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/><line x1="0" y1="165" x2="540" y2="165"/><line x1="0" y1="15" x2="540" y2="15"/></g>
+    <line x1="10.5" y1="315" x2="529.5" y2="315" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round"/>
+    <polyline points="518.5,321.5 529.5,315 518.5,308.5" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="21.5,308.5 10.5,315 21.5,321.5" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="120" y1="409.5" x2="120" y2="10.5" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round"/>
+    <polyline points="126.5,21.5 120,10.5 113.5,21.5" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="113.5,398.5 120,409.5 126.5,398.5" fill="none" stroke="#1e1e1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="120" y1="315" x2="454" y2="169.78" stroke="#e03131" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="465,165 453.84,176.94 448.65,165.02" fill="#e03131" stroke="#e03131" stroke-width="1" stroke-linejoin="round"/>
+    <line x1="120" y1="315" x2="308.68" y2="232.97" stroke="#f08c00" stroke-width="5" stroke-linecap="round"/>
+    <line x1="120" y1="315" x2="234.63" y2="85.73" stroke="#1971c2" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="240,75 239.11,91.32 227.48,85.51" fill="#1971c2" stroke="#1971c2" stroke-width="1" stroke-linejoin="round"/>
+    <line x1="240" y1="75" x2="308.68" y2="232.97" stroke="#f08c00" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 8"/>
+    <polyline points="292.17,240.14 285,223.63 301.5,216.46" fill="none" stroke="#f08c00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 191.53 283.9 A 78 78 0 0 0 154.88 245.23" fill="none" stroke="#2f9e44" stroke-width="4" stroke-linecap="round"/>
+    <text x="158.1" y="286.58" fill="#2f9e44" font-size="22" text-anchor="middle"><tspan font-style="italic">α</tspan></text>
+    <text x="203.64" y="119.22" fill="#1971c2" font-size="24" text-anchor="middle"><tspan font-style="italic">a</tspan></text>
+    <text x="409.52" y="177.89" fill="#e03131" font-size="24" text-anchor="middle"><tspan font-style="italic">b</tspan></text>
+    <text x="199.42" y="195.66" fill="#1971c2" font-size="17" text-anchor="middle" transform="rotate(-63.43 199.42 189.71)">‖<tspan font-style="italic">a</tspan>‖</text>
+    <text x="395.08" y="217.71" fill="#e03131" font-size="17" text-anchor="middle" transform="rotate(-23.5 395.08 211.76)">‖<tspan font-style="italic">b</tspan>‖</text>
+    <text x="235.65" y="287.68" fill="#f08c00" font-size="17" text-anchor="middle" transform="rotate(-23.5 235.65 281.73)">‖<tspan font-style="italic">c</tspan>‖</text>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="330" viewBox="0 0 460 330" role="img" aria-labelledby="title desc" font-family="Cambria, 'Cambria Math', 'STIX Two Text', 'Times New Roman', Times, 'Liberation Serif', serif">
+  <title id="title">Right-angle triangle: hypotenuse ‖a‖, adjacent side ‖c‖, angle α</title>
+  <desc id="desc">A right-angle triangle whose hypotenuse has length ‖a‖ and whose side adjacent to the angle α has length ‖c‖.</desc>
+  <defs><clipPath id="plate"><rect x="1" y="1" width="458" height="328" rx="10"/></clipPath></defs>
+  <rect x="0.5" y="0.5" width="459" height="329" rx="10" fill="#ffffff" stroke="#d9d9d9"/>
+  <g clip-path="url(#plate)">
+    <line x1="405" y1="255" x2="405" y2="40" stroke="#f08c00" stroke-width="5" stroke-linecap="round" stroke-dasharray="0.1 8"/>
+    <line x1="55" y1="255" x2="405" y2="255" stroke="#f08c00" stroke-width="5.5" stroke-linecap="round"/>
+    <polyline points="377,255 377,227 405,227" fill="none" stroke="#f08c00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="55" y1="255" x2="405" y2="40" stroke="#1971c2" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M 155 255 A 100 100 0 0 0 140.21 202.66" fill="none" stroke="#2f9e44" stroke-width="6" stroke-linecap="round"/>
+    <text x="116.59" y="248.09" fill="#2f9e44" font-size="30" text-anchor="middle"><tspan font-style="italic">α</tspan></text>
+    <text x="214.3" y="132.44" fill="#1971c2" font-size="30" text-anchor="middle">‖<tspan font-style="italic">a</tspan>‖</text>
+    <text x="230" y="303.5" fill="#f08c00" font-size="30" text-anchor="middle">‖<tspan font-style="italic">c</tspan>‖</text>
+  </g>
+</svg>
