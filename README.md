@@ -46,31 +46,37 @@ lessons/             # the course: notes, scripts and generated files, by module
 app/config/envs.py   # model settings, notes/output path mapping
 main.py              # entry point
 devtools/            # requirements, tool config (ruff, commitizen), .env.sample
+.agents/skills/      # agent skills (lesson-script)
+.claude/skills/      # symlinks to .agents/skills, for Claude Code
 ```
+
+Every command that needs the tool config passes `--config devtools/pyproject.toml`.
 
 ## Lessons
 
-Each lesson keeps its notes, its script and its results together:
+Each lesson keeps its notes, its script and its results together. Module folders are
+zero padded (`module01`, not `module1`) so they keep sorting past module 9.
 
 ```
 lessons/
   module01/
-    01_similarity_search.md      # the notes
-    01_similarity_search.py      # the script written from them
+    01_similarity_search.md      # the notes (you write these)
+    01_similarity_search.py      # the script (the lesson-script skill writes it)
     output/
-      01_similarity_search/      # whatever that script generates
+      01_similarity_search/      # what the script generates (gitignored)
         similarities.csv
         nearest_neighbors.json
 ```
 
-The notes and the script share a name, so they sit side by side in the file tree
-and one fuzzy-find turns up both. Generated files stay in the module you are
-reading, under `output/` (gitignored - rerun the lesson to recreate them).
+Write the notes, then call the skill with their path:
 
-Module folders are zero padded (`module01`, not `module1`) so they keep sorting
-correctly past module 9.
+```
+/lesson-script lessons/module01/01_similarity_search.md    # Claude Code, Cursor, Copilot
+$lesson-script lessons/module01/01_similarity_search.md    # Codex
+```
 
-Run a lesson with:
+The script finds its notes and output folder through `app/config/envs.py`, so it holds
+no paths or model ids. Run it with:
 
 ```bash
 make lesson LESSON=lessons/module01/01_similarity_search.py
@@ -84,24 +90,14 @@ and README, and it does not use the root `.venv` or `app/config`. Set it up and 
 it from inside its own folder. Add the folder to `extend-exclude` in
 `devtools/pyproject.toml`, because each project lints itself.
 
-## Adding a lesson
+## Agents
 
-Drop the notes in `lessons/moduleNN/<nn>_<name>.md`. Nothing else needs wiring:
-a script written beside it finds its own notes and output directory through
-`app/config/envs.py`:
+`AGENTS.md` holds the always-loaded instructions for coding agents; `CLAUDE.md` only
+imports it (`@AGENTS.md`), so edit `AGENTS.md`. Skills use the
+[Agent Skills](https://agentskills.io) format in `.agents/skills/<name>/`, read by
+Codex, Cursor and Copilot. Claude Code reads `.claude/skills/` instead, so each skill
+gets a symlink there:
 
-- `doc_path(__file__)` -> the `.md` next to the script
-- `output_path(__file__, "similarities.csv")` -> where to write a generated file,
-  with the directory already created
-
-So a lesson script holds only the code the lesson is about - no paths, no model ids.
-Results that are just text go to the terminal; anything file-shaped (`.json`, `.csv`,
-`.md`, ...) goes under `output/`.
-
-Tool configuration lives in `devtools/pyproject.toml`; every command that needs it
-passes `--config devtools/pyproject.toml`.
-
-`AGENTS.md` holds the instructions for coding agents (Codex, Copilot, Cursor,
-...): the layout contract, how a lesson script is written, and how to verify one
-without making billed API calls. `CLAUDE.md` only imports it (`@AGENTS.md`), so
-Claude Code loads the same file. Edit `AGENTS.md`, never `CLAUDE.md`.
+```bash
+ln -s ../../.agents/skills/<name> .claude/skills/<name>
+```
