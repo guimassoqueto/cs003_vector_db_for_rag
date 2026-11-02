@@ -12,12 +12,14 @@ env:
 
 # Create .venv if needed and make it match uv.lock exactly.
 install:
+	@npx skills add guimassoqueto/ai-skills --skill lesson-script -a claude-code -a codex -y
 	@uv sync
 	@$(MAKE) --no-print-directory hooks
 
 reinstall:
 	@rm -rf .venv
 	@$(MAKE) --no-print-directory install
+	@npx skills update -y
 
 # Upgrade every dependency to its latest version, rewriting uv.lock.
 update:

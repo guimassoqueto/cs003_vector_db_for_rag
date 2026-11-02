@@ -6,6 +6,7 @@ Certificate available at:
 
 - [asdf](https://asdf-vm.com) with the `python` and `uv` plugins. `.tool-versions` pins
   Python 3.14.7 and uv; `asdf install` installs both.
+- [npx skills](https://github.com/vercel-labs/skills) to load the required project skills
 
 asdf provides Python and uv; uv installs the dependencies into `.venv` with that Python
 and never downloads one of its own (`python-preference = "only-system"` in
@@ -16,7 +17,7 @@ Makefile hands uv that version, so `make install` rebuilds `.venv` with it.
 
 ```bash
 make env        # copy devtools/.env.sample to .env (won't overwrite an existing one)
-make install    # create .venv with the locked dependencies, install the git hooks
+make install    # create .venv with the locked dependencies, install the git hooks and the ai skills
 ```
 
 Dependencies are declared unpinned in `pyproject.toml` (tooling in the `dev` group) and
