@@ -1,0 +1,15 @@
+# Chroma server for this lesson's script, on localhost:8000.
+#   docker compose up -d     # start it (from this folder)
+#   docker compose down      # stop it, keeping the data
+#   docker compose down -v   # stop it and delete the data
+services:
+  chroma:
+    # Keep the tag in step with the chromadb client in uv.lock.
+    image: chromadb/chroma:1.5.9
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma-data:/data
+
+volumes:
+  chroma-data:

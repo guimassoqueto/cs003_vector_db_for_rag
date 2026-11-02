@@ -7,6 +7,7 @@ Certificate available at:
 - [asdf](https://asdf-vm.com) with the `python` and `uv` plugins. `.tool-versions` pins
   Python 3.14.7 and uv; `asdf install` installs both.
 - [npx skills](https://github.com/vercel-labs/skills) to load the required project skills
+- Docker with Compose, for lessons that talk to a server (Chroma, say)
 
 asdf provides Python and uv; uv installs the dependencies into `.venv` with that Python
 and never downloads one of its own (`python-preference = "only-system"` in
@@ -95,6 +96,19 @@ no paths or model ids. Run it with:
 ```bash
 make lesson LESSON=lessons/module01/01_similarity_search.py
 ```
+
+A lesson that needs a server (a Chroma database, say) gets a folder of its own holding
+the notes, the script and a `docker-compose.yml`. Start the server from that folder
+before running the script, and stop it when you are done:
+
+```bash
+cd lessons/module01/09_chroma_db_filtering
+docker compose up -d     # Chroma on localhost:8000
+docker compose down      # add -v to delete its data too
+```
+
+The server image tag in `docker-compose.yml` matches the `chromadb` client in `uv.lock`;
+bump both together.
 
 ## Self-contained projects
 

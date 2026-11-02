@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Vector Databases for RAG: course notes and runnable lesson scripts"
 requires-python = ">=3.14"
 dependencies = [
+    "chromadb",
     "numpy",
     "python-dotenv",
     "scipy",
