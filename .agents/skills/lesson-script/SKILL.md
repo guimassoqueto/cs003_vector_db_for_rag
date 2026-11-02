@@ -68,17 +68,17 @@ Where results go:
   `devtools/.env.sample`, and the user puts the value in `.env`. Clients that read
   their key from the environment (`ChatAnthropic` and `ANTHROPIC_API_KEY`, say) then
   need no argument.
-- **A package.** Add it, unpinned, under `# Runtime` in `devtools/requirements.txt`,
-  then run `make install`.
+- **A package.** `uv add --raw <package>` records it, unpinned, in `pyproject.toml` and
+  `uv.lock`, and installs it (without `--raw`, uv writes a `>=` bound).
 
 ## 4. Verify without spending the user's money
 
 Lint and format just the script, and fix whatever ruff reports but cannot fix itself.
-Don't use `make lint` here: it covers the whole repo, the user's own notebooks included.
+Don't use `make lint` here: it covers the whole repo, not just this script.
 
 ```bash
-.venv/bin/ruff check --fix --config devtools/pyproject.toml lessons/moduleNN/<nn>_<name>.py
-.venv/bin/ruff format --config devtools/pyproject.toml lessons/moduleNN/<nn>_<name>.py
+uv run ruff check --fix lessons/moduleNN/<nn>_<name>.py
+uv run ruff format lessons/moduleNN/<nn>_<name>.py
 ```
 
 **No billed calls:** run it with `make lesson LESSON=lessons/moduleNN/<nn>_<name>.py`
@@ -106,11 +106,11 @@ Give one canned `AIMessage` per model call, in order, each shaped for whatever p
 consumes it. A paid embedding model is stubbed the same way, with
 `lambda **kwargs: DeterministicFakeEmbedding(size=...)` (from `langchain_core.embeddings`)
 in place of its class. Run the file from the repo root with
-`PYTHONPATH=. .venv/bin/python <file>`. Afterwards delete the stub output or restore the
+`PYTHONPATH=. uv run <file>`. Afterwards delete the stub output or restore the
 real files, so `output/` only ever holds genuine runs.
 
 ## 5. Report
 
 Give the script's path and the command that runs it, what it printed and wrote, what you
-added to `envs.py`, `devtools/.env.sample` or `devtools/requirements.txt`, and whether it
+added to `envs.py`, `devtools/.env.sample` or `pyproject.toml`, and whether it
 ran for real or against stubs. After a stubbed run, offer the real one.

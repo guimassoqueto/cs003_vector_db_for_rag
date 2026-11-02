@@ -1,8 +1,0 @@
-# Runtime
-python-dotenv
-
-# Tooling
-commitizen
-pip-review
-pre-commit
-ruff

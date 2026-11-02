@@ -4,15 +4,27 @@ Certificate available at:
 
 ## Requirements
 
-- Python 3.14.7 (see `.tool-versions`)
+- [asdf](https://asdf-vm.com) with the `python` and `uv` plugins. `.tool-versions` pins
+  Python 3.14.7 and uv; `asdf install` installs both.
+
+asdf provides Python and uv; uv installs the dependencies into `.venv` with that Python
+and never downloads one of its own (`python-preference = "only-system"` in
+`pyproject.toml`). To change Python, edit `.tool-versions` and run `asdf install`: the
+Makefile hands uv that version, so `make install` rebuilds `.venv` with it.
 
 ## Setup
 
 ```bash
-make venv       # create .venv
 make env        # copy devtools/.env.sample to .env (won't overwrite an existing one)
-make install    # install dependencies and the git hooks
+make install    # create .venv with the locked dependencies, install the git hooks
 ```
+
+Dependencies are declared unpinned in `pyproject.toml` (tooling in the `dev` group) and
+locked to exact versions in `uv.lock`. `uv add --raw <package>` (plus `--dev` for
+tooling) records a new one in both and installs it; `--raw` keeps it unpinned, where
+plain `uv add` would write a `>=` bound. `uv remove <package>` takes it out. `.venv` has
+no pip, so a `pip install` would land in asdf's global Python. torch comes from
+PyTorch's CPU-only index (`[tool.uv.sources]`), without the CUDA libraries.
 
 When a lesson needs an API key, it is listed in `devtools/.env.sample`: put its
 value in `.env`.
@@ -36,8 +48,9 @@ commit again. The commit message must be a conventional commit (`feat: ...`,
 | `make commit`               | Commit through commitizen (conventional commit messages)    |
 | `make hooks`                | (Re)install the pre-commit and commit-msg hooks             |
 | `make update-hooks`         | Bump the pinned hook revisions in `.pre-commit-config.yaml` |
-| `make check-updates`        | List outdated dependencies                                  |
-| `make reinstall`            | Force a clean reinstall of all dependencies                 |
+| `make check-updates`        | List what `make update` would upgrade, changing nothing     |
+| `make update`               | Upgrade all dependencies to their latest versions           |
+| `make reinstall`            | Delete `.venv` and run `make install` again                 |
 
 ## Layout
 
@@ -45,12 +58,12 @@ commit again. The commit message must be a conventional commit (`feat: ...`,
 lessons/             # the course: notes, scripts and generated files, by module
 app/config/envs.py   # model settings, notes/output path mapping
 main.py              # entry point
-devtools/            # requirements, tool config (ruff, commitizen), .env.sample
+pyproject.toml       # dependencies and tool config (uv, ruff, commitizen)
+uv.lock              # exact dependency versions, written by uv
+devtools/            # .env.sample, pre-commit fixer script
 .agents/skills/      # agent skills (lesson-script)
 .claude/skills/      # symlinks to .agents/skills, for Claude Code
 ```
-
-Every command that needs the tool config passes `--config devtools/pyproject.toml`.
 
 ## Lessons
 
@@ -87,8 +100,8 @@ make lesson LESSON=lessons/module01/01_similarity_search.py
 Some lessons are full apps instead of single scripts, each in its own folder under
 `lessons/moduleNN/`. Each one has its own venv, `pyproject.toml`, `Makefile`, `.env`
 and README, and it does not use the root `.venv` or `app/config`. Set it up and run
-it from inside its own folder. Add the folder to `extend-exclude` in
-`devtools/pyproject.toml`, because each project lints itself.
+it from inside its own folder. Add the folder to `extend-exclude` in the root
+`pyproject.toml`, because each project lints itself.
 
 ## Agents
 

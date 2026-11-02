@@ -8,14 +8,16 @@ and are asked for it, read `.agents/skills/lesson-script/SKILL.md` and follow it
 
 A folder under `lessons/` with its own `pyproject.toml` is an independent project, not a
 lesson, so the skill doesn't apply. Follow its own README and Makefile, use its own
-`.venv`, never import `app.config` from it or add its dependencies to
-`devtools/requirements.txt`, and add it to `extend-exclude` in `devtools/pyproject.toml`.
+`.venv`, never import `app.config` from it or add its dependencies to the root
+`pyproject.toml`, and add it to `extend-exclude` there.
 
 ## Conventions
 
-- Python 3.14, venv at `.venv`, dependencies unpinned in `devtools/requirements.txt`.
-- `make lint` / `make lint-check`: ruff fix / check only (line length 120, config
-  `devtools/pyproject.toml`).
+- Python 3.14 from asdf (`.tool-versions`). uv manages `.venv`: add dependencies unpinned
+  with `uv add --raw <pkg>` (plus `--dev` for tooling), run tools with `uv run`. Never
+  `pip install`: `.venv` has no pip, so it would hit asdf's global Python.
+- `make lint` / `make lint-check`: ruff fix / check only (line length 120, config in
+  `pyproject.toml`).
 - Don't commit unless asked. A commit-msg hook enforces conventional commits (`feat:`,
   `fix:`, `chore:`, ...); `make commit` runs commitizen.
 - `output/` is gitignored: never commit generated files. `make clean-output` deletes them.
