@@ -6,10 +6,10 @@ load_dotenv()
 
 DEFAULT_MAX_TOKENS = 1024
 
-# sentence-transformers embedding model: module01/09, module01/10
+# sentence-transformers embedding model: module01/09, module01/10, module01/11
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
-# Chroma server started by a lesson folder's docker-compose.yml: module01/09, module01/10
+# Chroma server started by a lesson folder's docker-compose.yml: module01/09, module01/10, module01/11
 CHROMA_HOST = "localhost"
 CHROMA_PORT = 8000
 
